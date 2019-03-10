@@ -33,12 +33,13 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'author_id');
     } 
 
-    public function gravatar(){
+    public function gravatar()
+    {
         $email = $this->email;
-        $default = asset("/img/author.jpg");
+        $default = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/200px-User_icon-cp.svg.png";
         $size = 100;
 
-        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ))) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
     }
 
     public function getBioHtmlAttribute($value){

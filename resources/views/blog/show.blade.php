@@ -1,15 +1,15 @@
-@extends ('layouts.main')
+@extends('layouts.main')
+
 @section('content')
-<div class="container"> 
+
+    <div class="container">
         <div class="row">
-        <div class="col-md-8">
+            <div class="col-md-8">
                 <article class="post-item post-detail">
-                @if ($post->image_url)
-                    <div class="post-item-image">
-        
+                    @if ($post->image_url)
+                        <div class="post-item-image">
                             <img src="{{ $post->image_url }}" alt="{{ $post->title }}">
-                        
-                    </div>
+                        </div>
                     @endif
 
                     <div class="post-item-body">
@@ -25,7 +25,7 @@
                                 </ul>
                             </div>
 
-                           {!! $post->body_html !!}
+                            {!! $post->body_html !!}
                         </div>
                     </div>
                 </article>
@@ -33,101 +33,31 @@
                 <article class="post-author padding-10">
                     <div class="media">
                       <div class="media-left">
-                      <?php $author = $post->author; ?>
-                        <a href="{{ route('author',$author->slug )}}">
-                          <img alt="{{$author->name }}" src="{{$author->gravatar() }}" class="media-object">
+                        <?php $author = $post->author; ?>
+                        <a href="{{ route('author', $author->slug) }}">
+                          <img alt="{{ $author->name }}" width="100" height="100" src="{{ $author->gravatar() }}" class="media-object">
                         </a>
                       </div>
-                      <div class="media-body">  
-                        <h4 class="media-heading"><a href="{{ route('author',$author->slug) }}">{{$author->name }}</a></h4>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="{{ route('author', $author->slug) }}">{{ $author->name }}</a></h4>
                         <div class="post-author-count">
-                          <a href="{{ route('author',$author->slug) }}">
+                          <a href="{{ route('author', $author->slug) }}">
                               <i class="fa fa-clone"></i>
-                              <?php $postCount =$author->posts()->published()->count() ?>
+                              <?php $postCount = $author->posts()->published()->count() ?>
                               {{ $postCount }} {{ str_plural('post', $postCount) }}
                           </a>
                         </div>
-                         {!!$author->bio_html !!}
+                        {!! $author->bio_html !!}
                       </div>
                     </div>
                 </article>
 
-                <article class="post-comments">
-                    <h3><i class="fa fa-comments"></i> 5 Comments</h3>
-
-                    <div class="comment-body padding-10">
-                        <ul class="comments-list">
-                            <li class="comment-item">
-                                <div class="comment-heading clearfix">
-                                    <div class="comment-author-meta">
-                                        <h4>John Doe <small>January 14, 2016</small></h4>
-                                    </div>
-                                </div>
-                                <div class="comment-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nesciunt nulla est, atque ratione nostrum cumque ducimus maxime, amet enim tempore ipsam. Id ea, veniam ipsam perspiciatis assumenda magnam doloribus!</p>
-                                    <p>Quibusdam iusto culpa, necessitatibus, libero sequi quae commodi ea ab non facilis enim vitae inventore laborum hic unde esse debitis. Adipisci nostrum reprehenderit explicabo, non molestias aliquid quibusdam tempore. Vel.</p>
-                                </div>
-                            </li>
-
-                            <li class="comment-item">
-                                <div class="comment-heading clearfix">
-                                    <div class="comment-author-meta">
-                                        <h4>John Doe <small>January 14, 2016</small></h4>
-                                    </div>
-                                </div>
-                                <div class="comment-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nesciunt nulla est, atque ratione nostrum cumque ducimus maxime, amet enim tempore ipsam. Id ea, veniam ipsam perspiciatis assumenda magnam doloribus!</p>
-                                    <p>Quibusdam iusto culpa, necessitatibus, libero sequi quae commodi ea ab non facilis enim vitae inventore laborum hic unde esse debitis. Adipisci nostrum reprehenderit explicabo, non molestias aliquid quibusdam tempore. Vel.</p>
-
-                                    <ul class="comments-list-children">
-                                        <li class="comment-item">
-                                            <div class="comment-heading clearfix">
-                                                <div class="comment-author-meta">
-                                                    <h4>John Doe <small>January 14, 2016</small></h4>
-                                                </div>
-                                            </div>
-                                            <div class="comment-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nesciunt nulla est, atque ratione nostrum cumque ducimus maxime, amet enim tempore ipsam. Id ea, veniam ipsam perspiciatis assumenda magnam doloribus!</p>
-                                                <p>Quibusdam iusto culpa, necessitatibus, libero sequi quae commodi ea ab non facilis enim vitae inventore laborum hic unde esse debitis. Adipisci nostrum reprehenderit explicabo, non molestias aliquid quibusdam tempore. Vel.</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="comment-item">
-                                            <div class="comment-heading clearfix">
-                                                <div class="comment-author-meta">
-                                                    <h4>John Doe <small>January 14, 2016</small></h4>
-                                                </div>
-                                            </div>
-                                            <div class="comment-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nesciunt nulla est, atque ratione nostrum cumque ducimus maxime, amet enim tempore ipsam. Id ea, veniam ipsam perspiciatis assumenda magnam doloribus!</p>
-                                                <p>Quibusdam iusto culpa, necessitatibus, libero sequi quae commodi ea ab non facilis enim vitae inventore laborum hic unde esse debitis. Adipisci nostrum reprehenderit explicabo, non molestias aliquid quibusdam tempore. Vel.</p>
-
-                                                <ul class="comments-list-children">
-                                                    <li class="comment-item">
-                                                        <div class="comment-heading clearfix">
-                                                            <div class="comment-author-meta">
-                                                                <h4>John Doe <small>January 14, 2016</small></h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-content">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nesciunt nulla est, atque ratione nostrum cumque ducimus maxime, amet enim tempore ipsam. Id ea, veniam ipsam perspiciatis assumenda magnam doloribus!</p>
-                                                            <p>Quibusdam iusto culpa, necessitatibus, libero sequi quae commodi ea ab non facilis enim vitae inventore laborum hic unde esse debitis. Adipisci nostrum reprehenderit explicabo, non molestias aliquid quibusdam tempore. Vel.</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </div>
-                        
+                <!-- comments here -->
             </div>
-            
-                @include('layouts.sidebar')
-            </div>
+
+            @include('layouts.sidebar')
+        </div>
     </div>
-@endsection
+    
 
+@endsection

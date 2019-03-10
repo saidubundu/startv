@@ -13,7 +13,11 @@ class BlogController extends Controller
 
     public function index(){
         
-        $posts = Post::with('author')->latestFirst()->published()->simplepaginate($this->limit);
+        $posts = Post::with('author')
+        ->latestFirst()
+        ->published()
+        ->simplepaginate($this->limit);
+
         return view("blog.index", compact('posts'));
         
     }
@@ -46,7 +50,9 @@ class BlogController extends Controller
     public function show(Post $post){
         
         $post->increment('view_count');
+        
         return view("blog.show", compact('post'));
 
     }
+
 }

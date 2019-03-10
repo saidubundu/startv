@@ -19,7 +19,7 @@ Route::get('/', [
 
 Route::get('/blog/{post}', [
     'uses' => 'BlogController@show',
-    'as' => 'blog.show'
+    'as' => '/blog.show'
 ]);
 
 Route::get('/category/{category}', [
@@ -33,4 +33,16 @@ Route::get('/author/{author}', [
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Backend\HomeController@index');
+
+Route::put('/backend/blog/restore/{blog}', [
+    'uses' => 'Backend\BlogController@restore',
+    'as' => 'blog.restore'
+]);
+
+Route::delete('/backend/blog/force-delete/{blog}', [
+    'uses' => 'Backend\BlogController@forceDelete',
+    'as' => 'blog.force-destroy'
+]);
+
+Route::resource('/backend/blog', 'Backend\BlogController');
