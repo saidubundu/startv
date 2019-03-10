@@ -20,6 +20,11 @@ class CategoriesTableSeeder extends Seeder
             ],
 
             [
+                'title' => 'Uncategorized',
+                'slug' => 'uncategorized'
+            ],
+
+            [
                 'title' => 'Photography',
                 'slug' => 'photography'
             ],
