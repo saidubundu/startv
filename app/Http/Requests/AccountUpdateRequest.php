@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
+use App\Http\Requests\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\Request;
-class UserstoreRequest extends FormRequest
+
+class AccountUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +26,10 @@ class UserstoreRequest extends FormRequest
     {
         return [
             'name'     => 'required',
-            'email'    => 'email|required|unique:users',
-            'password' => 'required|confirmed',
+            'email'    => 'email|required|unique:users,email,' . auth()->user()->id,
+            'password' => 'required_with:password_confirmation|confirmed',
             'role'     => 'required',
-            'slug'     => 'required|unique:users'
+            'slug'     => 'required|unique:users,slug,' . auth()->user()->id,
         ];
     }
 }

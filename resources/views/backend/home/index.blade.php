@@ -20,7 +20,7 @@
               <!-- /.box-header -->
               <div class="box-body ">
                     <h3>Welcome to TvApp!</h3>
-                    <p class="lead text-muted">Hallo {{ Auth::user()->name }}, Welcome to TvApp</p>
+                    <p class="lead text-muted">Hello {{ Auth::user()->name }}, Welcome to TvApp</p>
 
                     <h4>Get started</h4>
                     <p><a href="{{ route('blog.create') }}" class="btn btn-primary">Write your first blog post</a> </p>

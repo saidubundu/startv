@@ -15,7 +15,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
-        "santigarcor/laratrust": "4.0.*"
+        "santigarcor/laratrust": "5.0.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -42,7 +42,8 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ]
+        ],
+            "files": ["app/Helpers/permissions.php"]
     },
     "autoload-dev": {
         "psr-4": {
