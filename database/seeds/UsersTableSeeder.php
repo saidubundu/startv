@@ -19,9 +19,9 @@ class UsersTableSeeder extends Seeder
         $faker = Factory::create();
         DB::table('users')->insert([
             [
-            'name' => "John Doe",
-            'slug' => 'john-doe',
-            'email' => "johndoe@test.com",
+            'name' => "Saidu Bundu-Kamara",
+            'slug' => 'saidu-bundu-kamara',
+            'email' => "saidubundu4@gmail.com",
             'password' => bcrypt('secret'),
             'bio' => $faker->text(rand(250, 300)) 
             ],
@@ -35,9 +35,9 @@ class UsersTableSeeder extends Seeder
                 ],
 
                 [
-                    'name' => "Saidu Bundu",
-                    'slug' => 'saidu-bundu',
-                    'email' => "saidu@test.com",
+                    'name' => "John Doe",
+                    'slug' => 'john-doe',
+                    'email' => "johndoe@test.com",
                     'password' => bcrypt('secret'),
                     'bio' => $faker->text(rand(250, 300)) 
                     ],
