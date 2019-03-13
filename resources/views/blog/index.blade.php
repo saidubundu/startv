@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container"> 
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/3IooSx6XLyk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/ZP8gJ3NVId8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <hr/>
         <div class="row">
             <div class="col-md-8">
@@ -37,7 +37,7 @@
                                     <li><i class="fa fa-clock-o"></i><time> {{ $post->date }}</time></li>
                                     <li><i class="fa fa-folder"></i><a href="{{ route('category', $post->category->slug) }}"> {{ $post->category->title }}</a></li>
                                     <li><i class="fa fa-tag"></i>{!! $post->tags_html !!}</li>
-                                    <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
+                                    <li><i class="fa fa-comments"></i><a href="{{ route('/blog.show', $post->slug) }}#post-comments">{{ $post->commentsNumber() }}</a></li>
                                 </ul>
                             </div>
                             <div class="pull-right">

@@ -25,6 +25,44 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function commentsNumber($label = 'Comment')
+    {
+        $commentsNumber = $this->comments->count();
+
+        return $commentsNumber . " " . str_plural($label, $commentsNumber);
+    }
+
+    public function createComment(array $data)
+    {
+        $this->comments()->create($data);
+    }
+
+    public function createTags($tagString)
+    {
+        $tags = explode(",", $tagString);
+        $tagIds = [];
+
+        foreach ($tags as $tag)
+        {
+            $newTag = Tag::firstOrCreate([
+                'slug' => str_slug($tag),
+                'name' => ucwords(trim($tag))
+            ]);
+
+            $tagIds[] = $newTag->id;
+        }
+        $this->tags()->detach();
+        $this->tags()->attach($tagIds);
+    
+        $this->tags()->sync($tagIds);
+    }
+
+
     public function setPublishedAtAttribute($value){
         $this->attributes['published_at'] = $value ?: NULL;
     }
